@@ -10,7 +10,7 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
 import os
-import openai
+
 
 # get a token: https://platform.openai.com/account/api-keys
 
