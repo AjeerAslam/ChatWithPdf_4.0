@@ -11,6 +11,15 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
 import os
 import openai
+import os
+
+# get a token: https://platform.openai.com/account/api-keys
+
+from getpass import getpass
+
+OPENAI_API_KEY = getpass()
+
+os.environ["OPENAI_API_KEY"] = "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"
  
 # Sidebar contents
 with st.sidebar:
@@ -76,7 +85,7 @@ def main():
         if query:
             docs = VectorStore.similarity_search(query=query, k=3)
  
-            llm = OpenAI(openai_api_key="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")
+            llm = OpenAI()
             chain = load_qa_chain(llm=llm, chain_type="stuff")
             with get_openai_callback() as cb:
                 response = chain.run(input_documents=docs, question=query)
