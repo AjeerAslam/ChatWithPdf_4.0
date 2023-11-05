@@ -76,7 +76,7 @@ def main():
         if query:
             docs = VectorStore.similarity_search(query=query, k=3)
  
-            llm = OpenAI()
+            llm = OpenAI(openai_api_key="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")
             chain = load_qa_chain(llm=llm, chain_type="stuff")
             with get_openai_callback() as cb:
                 response = chain.run(input_documents=docs, question=query)
