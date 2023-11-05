@@ -10,6 +10,7 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
 import os
+import openai
  
 # Sidebar contents
 with st.sidebar:
@@ -26,6 +27,7 @@ with st.sidebar:
     st.write('Made with ❤️ by [Prompt Engineer](https://youtube.com/@engineerprompt)')
  
 load_dotenv()
+openai.api_key ='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'
  
 def main():
     st.header("Chat with PDF 💬")
