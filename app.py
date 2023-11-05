@@ -12,9 +12,14 @@ from langchain.callbacks import get_openai_callback
 import os
 
 
+
 # get a token: https://platform.openai.com/account/api-keys
 
+from getpass import getpass
 
+OPENAI_API_KEY = getpass()
+
+os.environ["OPENAI_API_KEY"] = "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"
  
 # Sidebar contents
 with st.sidebar:
