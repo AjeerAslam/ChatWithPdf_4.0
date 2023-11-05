@@ -26,11 +26,10 @@ with st.sidebar:
     add_vertical_space(5)
     st.write('Made with ❤️ by [Prompt Engineer](https://youtube.com/@engineerprompt)')
  
+load_dotenv()
 
-#openai.api_key ='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'
  
 def main():
-    load_dotenv()
     st.header("Chat with PDF 💬")
  
  
