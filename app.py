@@ -9,15 +9,13 @@ from langchain.vectorstores import FAISS
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
-import openai
 import os
 
 # get a token: https://platform.openai.com/account/api-keys
 
 
 
-load_dotenv()
-openai.api_key ='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'
+
 
 # Sidebar contents
 with st.sidebar:
