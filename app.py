@@ -116,8 +116,8 @@ def main():
                 docs = VectorStore.similarity_search(query=prompt, k=3)
                 llm = OpenAI()
                 chain = load_qa_chain(llm=llm, chain_type="stuff")
-                # with get_openai_callback() as cb:
-                #     assistant_response = chain.run(input_documents=docs, question=prompt)
+                with get_openai_callback() as cb:
+                    assistant_response = chain.run(input_documents=docs, question=prompt)
 
                 # Simulate stream of response with milliseconds delay
                 for chunk in assistant_response.split():
