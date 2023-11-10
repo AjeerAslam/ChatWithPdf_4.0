@@ -64,23 +64,24 @@ def main():
  
  
         # Initialize chats
-        if "chats" not in st.session_state:
-            st.session_state.chat_id = 0
-            st.session_state.chats = [[]]
-            st.session_state.messages = []
+        if "allChats" not in st.session_state:
+            st.session_state.allChats = [[]]
+            st.session_state.currentChat = []
+            st.session_state.chatIndex = 0
+            
 
 
         with st.sidebar:
             #Create a button to increment and display the number
             if st.button('New chat+'):
-                st.session_state.chats.append([])
-                st.session_state.messages=st.session_state.chats[len(st.session_state.chats)-1]
-                st.session_state.chat_id=len(st.session_state.chats)-1
-            for chat in range(len(st.session_state.chats)):
+                st.session_state.allChats.append([])
+                st.session_state.currentChat=st.session_state.allChats[len(st.session_state.allChats)-1]
+                st.session_state.chatIndex=len(st.session_state.allChats)-1
+            for chat in range(len(st.session_state.allChats)):
                 #button_key = f'button_{i}'
                 if st.button(f'chat-{chat+1}'):
-                    st.session_state.messages = st.session_state.chats[chat]
-                    st.session_state.chat_id=chat
+                    st.session_state.currentChat= st.session_state.allChats[chat]
+                    st.session_state.chatIndex=chat
             add_vertical_space(5)
             st.write('Made with ❤️ by Ajeer')
 
@@ -94,15 +95,15 @@ def main():
 
 
         # Display chat messages from history on app rerun
-        for message in st.session_state.messages:
+        for message in st.session_state.currentChat:
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
 
         # Accept user input
         if prompt := st.chat_input("What is up?"):
             # Add user message to chat history
-            st.session_state.messages.append({"role": "user", "content": prompt})
-            st.session_state.chats[st.session_state.chat_id]=st.session_state.messages
+            st.session_state.currentChat.append({"role": "user", "content": prompt})
+            st.session_state.allChats[st.session_state.chatIndex]=st.session_state.currentChat
             # Display user message in chat message container
             with st.chat_message("user"):
                 st.markdown(prompt)
@@ -126,7 +127,7 @@ def main():
                     message_placeholder.markdown(full_response + "▌")
                 message_placeholder.markdown(full_response)
             # Add assistant response to chat history
-            st.session_state.messages.append({"role": "assistant", "content": full_response})
+            st.session_state.currentChat.append({"role": "assistant", "content": full_response})
  
 if __name__ == '__main__':
     main()
