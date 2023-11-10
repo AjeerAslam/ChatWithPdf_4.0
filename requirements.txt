@@ -4,5 +4,5 @@ python-dotenv
 streamlit
 faiss-cpu
 streamlit-extras
-openai==1.2.2
+openai
 tiktoken
