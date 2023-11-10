@@ -49,15 +49,15 @@ def main():
         store_name = pdf.name[:-4]
         # st.write(chunks)
  
-        if os.path.exists(f"{store_name}.pkl"):
-            with open(f"{store_name}.pkl", "rb") as f:
-                VectorStore = pickle.load(f)
-            # st.write('Embeddings Loaded from the Disk')s
-        else:
-            embeddings = OpenAIEmbeddings()
-            VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
-            with open(f"{store_name}.pkl", "wb") as f:
-                pickle.dump(VectorStore, f)
+        # if os.path.exists(f"{store_name}.pkl"):
+        #     with open(f"{store_name}.pkl", "rb") as f:
+        #         VectorStore = pickle.load(f)
+        #     # st.write('Embeddings Loaded from the Disk')s
+        # else:
+        embeddings = OpenAIEmbeddings()
+        VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
+        with open(f"{store_name}.pkl", "wb") as f:
+            pickle.dump(VectorStore, f)
  
         # embeddings = OpenAIEmbeddings()
         # VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
