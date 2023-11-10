@@ -56,8 +56,8 @@ def main():
         # else:
         embeddings = OpenAIEmbeddings()
         VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
-        with open(f"{store_name}.pkl", "wb") as f:
-            pickle.dump(VectorStore, f)
+        # with open(f"{store_name}.pkl", "wb") as f:
+        #     pickle.dump(VectorStore, f)
  
         # embeddings = OpenAIEmbeddings()
         # VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
