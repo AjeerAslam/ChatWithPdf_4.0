@@ -20,7 +20,7 @@ import time
 
 
  
-load_dotenv()
+
 
  
 def main():
@@ -130,4 +130,5 @@ def main():
             st.session_state.currentChat.append({"role": "assistant", "content": full_response})
  
 if __name__ == '__main__':
+    os.environ["OPENAI_API_KEY"] =st.secrets['OPENAI_API_KEY']
     main()
