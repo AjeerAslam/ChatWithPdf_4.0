@@ -20,7 +20,7 @@ import time
 
 
  
-
+load_dotenv()
 
  
 def main():
